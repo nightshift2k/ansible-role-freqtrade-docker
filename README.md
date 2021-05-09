@@ -29,7 +29,7 @@ Note that this role requires root access, so either run it in a playbook with a 
     
 ### From Ansible Galaxy
 
-    ansible-galaxy install nightshift2k.freqtrade-docker
+    ansible-galaxy install nightshift2k.freqtrade_docker
 
 ## Role Variables
 
