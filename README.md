@@ -18,7 +18,7 @@ Note that this role requires root access, so either run it in a playbook with a 
 
     - hosts: tradingbots
       roles:
-        - role: nightshift2k.freqtrade-docker
+        - role: nightshift2k.freqtrade_docker
           become: yes
 
 ## Installation
@@ -82,7 +82,7 @@ This role is dependent on `geeringguy.docker` and also the collection `community
       vars_files:
         - vars/freqtrade-docker.yml
       roles:
-        - role: nightshift2k.freqtrade-docker
+        - role: nightshift2k.freqtrade_docker
           become: yes
 
 *Inside `vars/freqtrade-docker.yml`*:
