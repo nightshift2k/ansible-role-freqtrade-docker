@@ -3,7 +3,7 @@ dependencies:
   - role: geerlingguy.docker
 
 galaxy_info:
-  role_name: freqtrade-docker
+  role_name: freqtrade_docker
   author: nightshift2k
   description: Freqtrade algorithmic trading bot for Debian/Ubuntu - dockerized.
   license: "license (BSD, MIT)"
