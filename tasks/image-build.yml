@@ -1,0 +1,20 @@
+---
+- name: "Build freqtrade image from GitHub"
+  block:
+    - name: "Clone freqtrade {{ freqtrade_branch }} from GitHub to build directory {{ docker_build_directory }}."
+      git:
+        repo: https://github.com/freqtrade/freqtrade.git
+        dest:  "{{ docker_build_directory }}/freqtrade"
+        version: "{{ freqtrade_branch }}"
+        force: true
+  
+    - name: "Build Docker image for freqtradeorg/freqtrade:{{ freqtrade_branch }}."
+      community.docker.docker_image:
+        name: freqtradeorg/freqtrade
+        tag: "{{ freqtrade_branch }}"
+        build:
+          dockerfile: "{{ docker_build_directory }}/freqtrade/Dockerfile"
+          path: "{{ docker_build_directory }}/freqtrade"
+        source: build
+  
+  when: build_freqtrade|bool

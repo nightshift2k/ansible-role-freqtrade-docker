@@ -1,0 +1,5 @@
+---
+- name: "remove Docker build directory {{ docker_build_directory }}."
+  file:
+    path: "{{ docker_build_directory }}"
+    state: absent

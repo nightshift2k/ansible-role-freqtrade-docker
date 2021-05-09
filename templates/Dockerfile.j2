@@ -1,0 +1,14 @@
+##
+## This file is maintained by Ansible - ALL MODIFICATIONS WILL BE REVERTED
+##
+FROM freqtradeorg/freqtrade:{{ freqtrade_branch }}
+
+# custom commands
+{% for command in freqtrade_custom_commands %}
+{{ command }}
+{% endfor %}
+
+# custom pip installs
+{% for pip in freqtrade_custom_pips %}
+RUN pip install --upgrade {{ pip }}
+{% endfor %}

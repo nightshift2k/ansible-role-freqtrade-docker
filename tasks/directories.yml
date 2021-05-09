@@ -1,0 +1,20 @@
+---
+- name: 'Docker build directory tasks.'
+  block:
+    - name: "remove Docker build directory {{ docker_build_directory }} from previous runs."
+      file:
+        path: "{{ docker_build_directory }}"
+        state: absent
+
+    - name: "create Docker build directory {{ docker_build_directory }}."
+      file:
+        path: "{{ docker_build_directory }}"
+        state: directory
+
+    - name: "create Docker build directory {{ docker_build_directory }}/freqtrade-custom"
+      file:
+        path: "{{ docker_build_directory }}/freqtrade-custom"
+        state: directory
+      when: build_freqtrade_custom|bool and freqtrade_custom_prefix is defined and (freqtrade_custom_commands is iterable or freqtrade_custom_pips is iterable)
+
+  when: build_freqtrade|bool or ( (build_freqtrade_custom|bool and freqtrade_custom_prefix is defined) and (freqtrade_custom_commands is iterable or freqtrade_custom_pips is iterable) )

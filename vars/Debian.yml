@@ -1,0 +1,4 @@
+---
+__prerequisite_packages:
+  - python3-docker
+  - python3-distutils

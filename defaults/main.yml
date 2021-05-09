@@ -1,0 +1,24 @@
+---
+# branch from github
+freqtrade_branch: "stable"
+
+# build directory for docker
+docker_build_directory: "/tmp/build/docker"
+
+# build freqtrade container from source
+build_freqtrade: false
+
+# build freqtrade custom image
+build_freqtrade_custom: false
+
+# prefix of the container for custom image
+freqtrade_custom_prefix : "custom"
+
+# commands for Dockerfile to be executed in the custom image
+freqtrade_custom_commands:
+  - "RUN pip install --upgrade pip"
+
+freqtrade_custom_pips:
+  - finta
+  - ta
+  - technical

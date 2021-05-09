@@ -1,0 +1,25 @@
+---
+# Variable configuration.
+- include_tasks: variables.yml
+
+# OS specific prerequisites - currently Debian / Ubuntu only
+- include_tasks: prerequisites-Debian.yml
+  when: ansible_os_family == 'Debian'
+
+# some directory prerequisits that need to be met first
+- include_tasks: directories.yml
+
+# perform image cleanup before building them
+- include_tasks: image-cleanup.yml
+
+# Build image from source (when configured)
+- include_tasks: image-build.yml
+
+# Pull image from Docker registry (if not build from source)
+- include_tasks: image-pull.yml
+
+# Build custom image based on the previously build or pulled image
+- include_tasks: image-build-custom.yml
+
+# Cleanup
+- include_tasks: post-cleanup.yml

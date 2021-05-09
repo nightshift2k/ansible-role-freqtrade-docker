@@ -1,0 +1,14 @@
+---
+- name: "remove Docker image for {{ freqtrade_custom_prefix }}/freqtrade:{{ freqtrade_branch }}."
+  community.docker.docker_image:
+    name: "{{ freqtrade_custom_prefix }}/freqtrade"
+    tag: "{{ freqtrade_branch }}"
+    state: absent
+  when: build_freqtrade_custom|bool and freqtrade_custom_prefix is defined
+
+- name: "remove Docker image for freqtradeorg/freqtrade:{{ freqtrade_branch }}."
+  community.docker.docker_image:
+    name: freqtradeorg/freqtrade
+    tag: "{{ freqtrade_branch }}"
+    state: absent
+  
